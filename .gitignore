@@ -51,3 +51,10 @@ replay_pid*
 # virtualenv
 venv/
 ENV/.idea
+
+###
+# MacOS from: https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
+###
+*.DS_Store
+.AppleDouble
+.LSOverride
