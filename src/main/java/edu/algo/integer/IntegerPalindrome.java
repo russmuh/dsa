@@ -24,15 +24,19 @@ package edu.algo.integer;
  */
 public class IntegerPalindrome {
 
-  public static void main(final String[] args) {
-    System.out.println(isPalindrome(123454321));
-  }
-
-  public static boolean isPalindrome(int n) {
-    int reverse = 0;
-
-    while () {
-      reverse = n % 10;
+    public static void main(final String[] args) {
+        System.out.println(isPalindrome(1234543210));
     }
-  }
+
+    public static boolean isPalindrome(int n) {
+        int reverse = 0;
+        int temp = n;
+
+        while (temp != 0) {
+            reverse = reverse * 10 + temp % 10;
+            temp /= 10;
+        }
+
+        return n == reverse;
+    }
 }
