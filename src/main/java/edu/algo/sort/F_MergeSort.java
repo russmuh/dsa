@@ -37,16 +37,16 @@ public class F_MergeSort {
    * </pre>
    */
   private static void merge(int[] array, int start, int mid, int end) {
-    // Define two temp arrays
+    // Define two temp sub-arrays
     int[] left = new int[(mid + 1) - start];
     int[] right = new int[end - mid];
 
-    // Copy the first half of array into temp1 array
+    // Copy the first half of array into left array
     for (int i = 0; i < left.length; i++) {
       left[i] = array[start + i];
     }
 
-    // Copy the second half of array into temp2 array
+    // Copy the second half of array into right array
     for (int j = 0; j < right.length; j++) {
       right[j] = array[(mid + 1) + j];
     }

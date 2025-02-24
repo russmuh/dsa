@@ -1,7 +1,8 @@
 package edu.algo.integer;
 
 /**
- * 287. Find the Duplicate Number
+ * 287. Find the Duplicate Number.
+ * LEVEL: MEDIUM
  *
  * <pre>
  * Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
@@ -40,7 +41,7 @@ package edu.algo.integer;
  * Can you solve the problem in linear runtime complexity?
  * </pre>
  */
-public class FindDuplicates {
+public class FindDuplicateNumber {
 
   public static void main(final String[] args) {
     final int[] array = {4, 2, 3, 1, 5};
@@ -48,7 +49,21 @@ public class FindDuplicates {
     System.out.println(findDuplicate(array));
   }
 
-  private static int findDuplicate(int[] nums) {
+  public static int findDuplicate(int[] nums) {
+    boolean[] monitor = new boolean[nums.length];
+
+    for (int i = 0; i < nums.length; i++) {
+      if (monitor[nums[i]]) {
+        return nums[i];
+      }
+
+      monitor[nums[i]] = true;
+    }
+
+    return -1;
+  }
+
+  private static int findDuplicate2(int[] nums) {
     int[] elems = new int[nums.length];
 
     for (int i = 0; i < nums.length; i++) {
