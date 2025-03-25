@@ -75,6 +75,7 @@ public class PreorderTreeTraversal {
     root.right.right.right = new Node(10);
     return root;
   }
+
   public static void main(String[] args) {
     Node tree1 = makeTree1();
     System.out.println("Actual:");

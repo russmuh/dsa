@@ -134,10 +134,40 @@ public class LongestSubstringWithoutRepeatingChars {
     return res;
   }
 
+  private static int longestUniqueSubstring3(String s) {
+    if (s == null || s.isEmpty()) {
+      return 0;
+    }
+
+    if (s.length() == 1) {
+      return 1;
+    }
+
+    int left = 0;
+
+    int max = 1;
+    for (int right = 1; right < s.length(); right++) {
+      int k = left;
+      int count = 0;
+      while (k < right) {
+        count++;
+        if (s.charAt(k) == s.charAt(right)) {
+          left += count;
+          break;
+        }
+        k++;
+      }
+
+      max = Math.max(max, right - left + 1);
+    }
+
+    return max;
+  }
+
   /**
    * Time complexity: O(n^2)
    */
-  private static int longestUniqueSubstring3(String str) {
+  private static int longestUniqueSubstring4(String str) {
     int length = str.length();
 
     if (length == 0) {

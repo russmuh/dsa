@@ -2,6 +2,7 @@ package edu.algo.integer;
 
 /**
  * 11. Container With Most Water
+ * LEVEL: MEDIUM
  *
  * <pre>
  * You are given an integer array height of length n. There are n vertical lines drawn such that
@@ -42,34 +43,56 @@ public class ContainerWithMostWater {
     System.out.println(maxArea(array));
   }
 
+  /**
+   * Time complexity: O(n)
+   * Space complexity: O(1)
+   */
   public static int maxArea(int[] height) {
     int length = height.length;
 
     int maxArea = 0;
 
-    int i = 0;
-    int j = length - 1;
+    int left = 0;
+    int right = length - 1;
 
     // [1, 1]
     // [4, 2, 5, 1]
     // [1, 8, 6, 2, 5, 4, 8, 3, 7]
-    while (i < length) {
-      if (i == j) {
+    while (left < length) {
+      if (left == right) {
         break;
       }
 
-      int h = Math.min(height[i], height[j]);
-      int w = j - i;
+      int h = Math.min(height[left], height[right]);
+      int w = right - left;
 
       int area = h * w;
       if (maxArea < area) {
         maxArea = area;
       }
 
-      if (height[i] > height[j]) {
-        j--;
+      if (height[left] > height[right]) {
+        right--;
       } else {
-        i++;
+        left++;
+      }
+    }
+
+    return maxArea;
+  }
+
+  /**
+   * Time complexity: O(n^2)
+   * Space complexity: O(1)
+   */
+  public static int maxArea2(int[] height) {
+    int maxArea = 0;
+
+    for (int i = 0; i < height.length; i++) {
+      for (int j = i + 1; j < height.length; j++) {
+        // Calculate the amount of water
+        int amount = Math.min(height[i], height[j]) * (j - i);
+        maxArea = Math.max(maxArea, amount * (j - i));
       }
     }
 
